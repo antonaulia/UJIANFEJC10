@@ -127,7 +127,36 @@
     }
   ],
   "cart": [],
-  "wihslist": [],
+  "wishlist": [
+    {
+      "userId": 2,
+      "productId": 3,
+      "productName": "Epic Comeback",
+      "wishlist": false,
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "productId": 2,
+      "productName": "The Gelap Kesatria",
+      "wishlist": false,
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "productId": 1,
+      "productName": "Kaos Polos Hitam",
+      "wishlist": true,
+      "id": 3
+    },
+    {
+      "userId": 2,
+      "productId": 4,
+      "productName": "Something In Coffee",
+      "wishlist": true,
+      "id": 4
+    }
+  ],
   "history": [
     {
       "userId": 2,

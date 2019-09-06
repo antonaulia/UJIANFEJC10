@@ -19,6 +19,7 @@ class ProductDetails extends Component {
     componentDidMount(){
         this.getProductDetails()
         this.props.caricartLength(this.props.id)
+        this.setState({wishlist:false})
     }
 
     getProductDetails = () => {
@@ -71,14 +72,16 @@ class ProductDetails extends Component {
         })
     }
 
-    favClickHandler =(id)=>{
+    favClickHandler =()=>{
         this.setState({wishlist : !this.state.wishlist})
+        console.log(this.state.wishlist)
         let newData={
             userId : this.props.id,
             productId : this.state.product.id,
+            productName: this.state.product.nama,
             wishlist : this.state.wishlist,
         }
-        Axios.get(urlApi+'wishlist?userId='+this.props.id+'&productId='+this.state.product.id)
+        Axios.get(urlApi+`wishlist?userId=${this.props.id}&productId=${this.state.product.id}`)
             .then((res)=>{
                 if(res.data.length<1){
                 Axios.post(urlApi+'wishlist',newData)
@@ -90,7 +93,7 @@ class ProductDetails extends Component {
                 })
                 }else{
                 newData.wishlist=!newData.wishlist
-                Axios.put(urlApi + 'wihslist?' + res.data[0].id, newData)
+                Axios.put(urlApi + 'wishlist/' + res.data[0].id, newData)
                 .then((res) => {
                     console.log(res)
                 })
@@ -98,14 +101,6 @@ class ProductDetails extends Component {
                     console.log(err)
                 })
                 }
-            })
-            .catch((err)=>{
-                console.log(err)
-            })
-
-        Axios.post(urlApi+'wishlist',newData)
-            .then((res)=>{
-                console.log(res)
             })
             .catch((err)=>{
                 console.log(err)
